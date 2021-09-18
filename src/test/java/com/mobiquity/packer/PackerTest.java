@@ -9,8 +9,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-public class PackerTest {
+ class PackerTest {
 
   private static final String TEST_FILE_OUTPUT_PATH = "src/test/resources/example_output";
   private static final String TEST_FILE_INPUT_PATH = "src/test/resources/example_input";
