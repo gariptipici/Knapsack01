@@ -25,7 +25,7 @@ public class Packer {
     return String.join("\n", indexes);
   }
 
-  private static Boolean containsUnconstrained(List<Line> lines) {
+  private static boolean containsUnconstrained(List<Line> lines) {
     return lines.stream().anyMatch(
         line -> line.getKnapsackWeight() > 10000 || line.getItems().size() > 15 || line.getItems()
             .stream().anyMatch(item -> item.getWeight() > 10000 || item.getValue() > 100)

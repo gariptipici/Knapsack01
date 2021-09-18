@@ -34,6 +34,42 @@ public class Knapsack {
 
     int[][] K = new int[n + 1][W + 1];
 
+    buildTable(W, wt, val, n, K);
+
+    // stores the result of Knapsack
+    int res = K[n][W];
+
+    int w = W;
+    backtrackInTable(indexes, wt, val, n, result, K, res, w);
+    return result.toString().isEmpty() ? "-" : result.toString();
+  }
+
+  private static void backtrackInTable(int[] indexes, int[] wt, int[] val, int n, StringBuilder result,
+      int[][] K, int res, int w) {
+    for (int i = n; i > 0 && res > 0; i--) {
+
+      // either the result comes from the top
+      // (K[i-1][w]) or from (val[i-1] + K[i-1]
+      // [w-wt[i-1]]) as in Knapsack table. If
+      // it comes from the latter one/ it means
+      // the item is included.
+      if (res != K[i - 1][w]) {
+        // This item is included.
+        result.append(indexes[i - 1]);
+
+        // Since this weight is included its
+        // value is deducted
+        res = res - val[i - 1];
+        w = w - wt[i - 1];
+
+        if (res > 0) {
+          result.append(",");
+        }
+      }
+    }
+  }
+
+  private static void buildTable(int W, int[] wt, int[] val, int n, int[][] K) {
     // Build table K[][] in bottom up manner
     for (int i = 0; i <= n; i++) {
       for (int w = 0; w <= W; w++) {
@@ -50,36 +86,9 @@ public class Knapsack {
         }
       }
     }
-
-    // stores the result of Knapsack
-    int res = K[n][W];
-    //System.out.println(res);
-
-    int w = W;
-    for (int i = n; i > 0 && res > 0; i--) {
-
-      // either the result comes from the top
-      // (K[i-1][w]) or from (val[i-1] + K[i-1]
-      // [w-wt[i-1]]) as in Knapsack table. If
-      // it comes from the latter one/ it means
-      // the item is included.
-      if (res != K[i - 1][w]) {
-        // This item is included.
-        //System.out.print(indexes[i - 1] + " - " + wt[i - 1] + " ");
-        result.append(indexes[i - 1]);
-
-        // Since this weight is included its
-        // value is deducted
-        res = res - val[i - 1];
-        w = w - wt[i - 1];
-
-        if (res > 0) {
-          result.append(",");
-        }
-      }
-    }
-    return result.toString().isEmpty() ? "-" : result.toString();
   }
 
+  public Knapsack(){
+  }
 
 }
