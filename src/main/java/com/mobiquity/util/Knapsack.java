@@ -88,7 +88,7 @@ public class Knapsack {
     }
   }
 
-  public Knapsack(){
+  private Knapsack(){
   }
 
 }

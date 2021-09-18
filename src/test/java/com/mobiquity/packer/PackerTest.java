@@ -18,7 +18,7 @@ public class PackerTest {
   private static final String TEST_FILE_UNCONSTRAINED_INPUT_PATH = "src/test/resources/example_unconstrained_input";
 
   @Test
-  public void packTest() throws APIException, IOException {
+  void packTest() throws APIException, IOException {
     String output = Files.lines(Paths.get(TEST_FILE_OUTPUT_PATH))
         .collect(Collectors.joining("\n"));
 
@@ -31,7 +31,7 @@ public class PackerTest {
   }
 
   @Test
-  public void packTestException() {
+  void packTestException() {
     File file = new File(TEST_FILE_ERROR_INPUT_PATH);
     String absolutePath = file.getAbsolutePath();
 
@@ -39,7 +39,7 @@ public class PackerTest {
   }
 
   @Test
-  public void packTestUnconstrained() {
+  void packTestUnconstrained() {
     File file = new File(TEST_FILE_UNCONSTRAINED_INPUT_PATH);
     String absolutePath = file.getAbsolutePath();
 
